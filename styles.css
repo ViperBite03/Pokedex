@@ -1,0 +1,166 @@
+body {
+  background-image: url('https://wallpapermemory.com/uploads/745/giratina-pokemon-wallpaper-ultra-hd-4k-279187.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title img {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 30px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.title img:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+
+.pokeName {
+  position: absolute;
+  margin-top: -30px;
+
+  text-align: center;
+  width: 100%;
+  font-family: '8BIT WONDER', sans-serif;
+  font-size: 13.14px;
+
+  transition: 0.3s ease;
+}
+
+.wrapper:hover .pokeName {
+  transition: 0.3s ease;
+  transform: translateY(-25px);
+}
+
+.pokeImage {
+  width: 100%;
+  padding-bottom: 30px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.wrapper:hover .pokeImage {
+  opacity: 1;
+  transition: 0.3s ease;
+  transform: translateY(-20px);
+}
+
+.wrapper {
+  width: 100%;
+  height: fit-content;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+
+  /*background-image: url('https://pbs.twimg.com/media/EV-9IO6WoAEL2M3.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(100%) brightness(129%);*/
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 15px 15px 22px -15px rgba(66, 66, 66, 0.55);
+  overflow: hidden;
+
+  transition: 0.3s ease;
+  position: absolute;
+  z-index: -1;
+} /*asi minimalista mola*/
+
+.wrapper:hover .card {
+  transition: 0.3s ease;
+
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.card .circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: red;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.card .background {
+  width: 100%;
+  height: 50%;
+
+  background-color: rgb(98, 0, 255);
+  position: absolute;
+}
+
+.card .pokeImageBG {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.content {
+  z-index: 1;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 50px;
+  margin: 50px;
+  margin-top: 70px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
