@@ -35,6 +35,9 @@ async function createCard(poke) {
     data.sprites.other['official-artwork'].front_default
   )
 
+  const info = document.createElement('a')
+  info.setAttribute('href', '/info.html?pokeID=' + poke.name)
+
   pokeImageBG.setAttribute('src', data.sprites.front_default)
 
   content.appendChild(pokeImage)
@@ -44,7 +47,8 @@ async function createCard(poke) {
   card.appendChild(pokeImageBG)
   wrapper.appendChild(card)
   wrapper.appendChild(content)
-  cards.appendChild(wrapper.cloneNode(true))
+  info.appendChild(wrapper)
+  cards.appendChild(info.cloneNode(true))
 }
 
 fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
