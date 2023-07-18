@@ -51,7 +51,7 @@ async function createCard(poke) {
   cards.appendChild(info.cloneNode(true))
 }
 
-fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
+fetch('https://pokeapi.co/api/v2/pokemon?limit=1200')
   .then((response) => response.json())
   .then(async (data) => {
     for (let pokemon of data.results) {

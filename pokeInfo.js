@@ -15,7 +15,7 @@ function setImage(pokeUrl = '') {
 }
 
 function createPokeInfoDOM(pokeData) {
-  setPokeName()
+  setTitle('h1')
   setImage(pokeData.sprites.other['official-artwork'].front_default)
 
   console.log(pokeData)
@@ -27,4 +27,4 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + pokeID)
     createPokeInfoDOM(data)
   })
 
-setTitle()
+setTitle('title')
