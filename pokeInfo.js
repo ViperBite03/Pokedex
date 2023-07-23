@@ -14,9 +14,19 @@ function setImage(pokeUrl = '') {
   bigImageLabel.setAttribute('src', pokeUrl)
 }
 
+function setLabelsTypes(types) {
+  const typesDiv = document.querySelector('.types')
+  for (let type of types) {
+    const typeDiv = document.createElement('div')
+    typeDiv.textContent = type.type.name.toUpperCase()
+    typesDiv.appendChild(typeDiv)
+  }
+}
+
 function createPokeInfoDOM(pokeData) {
   setTitle('h1')
   setImage(pokeData.sprites.other['official-artwork'].front_default)
+  setLabelsTypes(pokeData.types)
 
   console.log(pokeData)
 }
