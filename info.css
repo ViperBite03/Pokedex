@@ -1,6 +1,10 @@
 body {
-  /*background-image: url('https://wallpapermemory.com/uploads/745/giratina-pokemon-wallpaper-ultra-hd-4k-279187.jpg');*/
-  background-color: rgb(155, 206, 206);
+  background: rgb(139, 61, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(139, 61, 255, 1) 0%,
+    rgba(103, 227, 231, 1) 100%
+  );
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -58,13 +62,19 @@ a:hover {
 
   width: 50%;
   height: 575px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  color: white;
 
-  background: linear-gradient(rgba(160, 224, 224, 0.314), rgba(0, 85, 85, 0.4));
+  /*background: linear-gradient(rgba(160, 224, 224, 0.314), rgba(0, 85, 85, 0.4));
   box-shadow: -10px -10px 50px -5px rgba(11, 75, 75, 0.5),
-    10px 10px 50px 0 rgba(255, 255, 255, 0.5);
-  border: 1px solig rgba(255, 255, 255, 0.18);
-  border-radius: 32px;
+  10px 10px 50px 0 rgba(255, 255, 255, 0.5);*/
+  border: 3px solid rgb(255, 255, 255);
+  background-color: white;
+  opacity: 25%;
+  border-radius: 25px;
+}
+
+h1 {
+  font-family: 'AwsumSans', sans-serif;
+  font-size: 35px;
 }

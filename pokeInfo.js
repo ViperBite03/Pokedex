@@ -23,10 +23,30 @@ function setLabelsTypes(types) {
   }
 }
 
+function setDimensions(height = '???', weight = '???') {
+  const heightDiv = document.querySelector('.height')
+  heightDiv.textContent = height / 10 + 'm'
+
+  const weightDiv = document.querySelector('.weight')
+  weightDiv.textContent = weight / 10 + 'kg'
+}
+
+function setNumber(listID = '???') {
+  const listDiv = document.querySelector('.list')
+  const noZeros = listID.toString().length
+  let finalNum = listID.toString()
+  for (let i = noZeros; i < 4; i++) {
+    finalNum = '0' + finalNum
+  }
+  listDiv.textContent = 'Nº ' + finalNum
+}
+
 function createPokeInfoDOM(pokeData) {
   setTitle('h1')
   setImage(pokeData.sprites.other['official-artwork'].front_default)
   setLabelsTypes(pokeData.types)
+  setDimensions(pokeData.height, pokeData.weight)
+  setNumber(pokeData.id)
 
   console.log(pokeData)
 }
