@@ -6,10 +6,15 @@
       href="https://cdn-icons-png.flaticon.com/512/361/361998.png?w=826&t=st=1688415260~exp=1688415860~hmac=9f3d4622db7000fd2978f860cd3bf62ef252748d5e50a36902c48eed61bfe14e"
     />
 
-    <link href="https://fonts.cdnfonts.com/css/awsumsans" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Days+One&display=swap"
+      rel="stylesheet"
+    />
     <title></title>
     <link rel="stylesheet" type="text/css" href="info.css" />
   </head>
+
   <body>
     <div class="title">
       <a href="/">
@@ -20,15 +25,39 @@
       </a>
     </div>
     <div class="container">
-      <img class="bigImage" src="" alt="" />
+      <div class="images">
+        <div class="minImage">
+          <div class="minImageBG"></div>
+          <img class="preImage" src="" alt="" />
+        </div>
+        <img class="bigImage" src="" alt="" />
+        <div class="minImage">
+          <div class="minImageBG"></div>
+          <img class="postImage" src="" alt="" />
+        </div>
+      </div>
       <div class="capsule">
         <h1></h1>
         <div class="list"></div>
-        <div class="types"></div>
-        <div class="height"></div>
-        <div class="weight"></div>
+        <div class="properties">
+          <div class="property">
+            <div class="property-title">Weight:</div>
+            <div class="weight"></div>
+          </div>
+
+          <div class="property">
+            <div class="property-title">Type:</div>
+            <div class="types"></div>
+          </div>
+
+          <div class="property">
+            <div class="property-title">Height:</div>
+            <div class="height"></div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
+
   <script src="pokeInfo.js"></script>
 </html>

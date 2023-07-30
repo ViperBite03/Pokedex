@@ -31,6 +31,31 @@ function setDimensions(height = '???', weight = '???') {
   weightDiv.textContent = weight / 10 + 'kg'
 }
 
+function setListNumber(listID) {
+  fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
+    .then((response) => response.json())
+    .then((data) => {
+      const postImage = document.querySelector('.postImage')
+      postImage.setAttribute(
+        'src',
+        data.sprites.other['official-artwork'].front_default
+      )
+      console.log(data.id)
+    })
+  if (listID > 1) {
+    fetch('https://pokeapi.co/api/v2/pokemon/' + (listID - 1))
+      .then((response) => response.json())
+      .then((data) => {
+        const postImage = document.querySelector('.preImage')
+        postImage.setAttribute(
+          'src',
+          data.sprites.other['official-artwork'].front_default
+        )
+        console.log(data.id)
+      })
+  }
+}
+
 function setNumber(listID = '???') {
   const listDiv = document.querySelector('.list')
   const noZeros = listID.toString().length
@@ -47,6 +72,7 @@ function createPokeInfoDOM(pokeData) {
   setLabelsTypes(pokeData.types)
   setDimensions(pokeData.height, pokeData.weight)
   setNumber(pokeData.id)
+  setListNumber(pokeData.id)
 
   console.log(pokeData)
 }

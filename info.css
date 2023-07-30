@@ -5,10 +5,6 @@ body {
     rgba(139, 61, 255, 1) 0%,
     rgba(103, 227, 231, 1) 100%
   );
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 * {
@@ -58,23 +54,66 @@ a:hover {
 }
 
 .capsule {
-  /*hacer responsive*/
-
   width: 50%;
   height: 575px;
   text-align: center;
   color: white;
+  font-family: 'Days One', sans-serif;
 
-  /*background: linear-gradient(rgba(160, 224, 224, 0.314), rgba(0, 85, 85, 0.4));
-  box-shadow: -10px -10px 50px -5px rgba(11, 75, 75, 0.5),
-  10px 10px 50px 0 rgba(255, 255, 255, 0.5);*/
+  background-color: rgba(255, 255, 255, 0.25);
   border: 3px solid rgb(255, 255, 255);
-  background-color: white;
-  opacity: 25%;
   border-radius: 25px;
 }
 
 h1 {
-  font-family: 'AwsumSans', sans-serif;
-  font-size: 35px;
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.list {
+  font-size: 25px;
+  margin-bottom: 35px;
+}
+
+.properties {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 25px;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+}
+
+.minImageBG {
+  width: 325px;
+  height: 110px;
+
+  left: -50px;
+  margin-top: 87.5px;
+  position: absolute;
+  z-index: -1;
+
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 3px solid rgb(255, 255, 255);
+  border-top-right-radius: 55px;
+  border-bottom-right-radius: 55px;
+
+  transition: 0.2s;
+}
+
+.minImage:hover .minImageBG {
+  left: -25px;
+  transition: 0.2s;
+}
+
+.minImage {
+  width: fit-content;
+  cursor: pointer;
+}
+.minImage img {
+  width: 200px;
 }
