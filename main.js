@@ -51,7 +51,18 @@ async function createCard(poke) {
   cards.appendChild(info.cloneNode(true))
 }
 
-fetch('https://pokeapi.co/api/v2/pokemon?limit=1200')
+const searchInput = document.querySelector('[data-search]')
+searchInput.addEventListener('input', (e) => {
+  const value = e.target.value
+  console.log(value)
+
+  /*users.forEach((poke) => {
+    const isVisible = poke.name.includes(value)
+    poke.name.element.classList.toggle('hide', !isVisible)
+  })*/
+})
+
+fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
   .then((response) => response.json())
   .then(async (data) => {
     for (let pokemon of data.results) {
