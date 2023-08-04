@@ -37,6 +37,7 @@ async function createCard(poke) {
 
   const info = document.createElement('a')
   info.setAttribute('href', '/info.html?pokeID=' + poke.name)
+  info.setAttribute('class', poke.name)
 
   pokeImageBG.setAttribute('src', data.sprites.front_default)
 
@@ -51,21 +52,22 @@ async function createCard(poke) {
   cards.appendChild(info.cloneNode(true))
 }
 
-const searchInput = document.querySelector('[data-search]')
-searchInput.addEventListener('input', (e) => {
-  const value = e.target.value
-  console.log(value)
-
-  /*users.forEach((poke) => {
-    const isVisible = poke.name.includes(value)
-    poke.name.element.classList.toggle('hide', !isVisible)
-  })*/
-})
-
 fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
   .then((response) => response.json())
   .then(async (data) => {
     for (let pokemon of data.results) {
       await createCard(pokemon)
     }
+
+    const searchInput = document.querySelector('[data-search]')
+    searchInput.addEventListener('input', (e) => {
+      const value = e.target.value
+      console.log(value)
+
+      data.results.forEach((pokemon) => {
+        const isVisible = pokemon.name.includes(value)
+        const pokeNameHTML = document.querySelector('.' + pokemon.name)
+        pokeNameHTML.classList.toggle('hide', !isVisible)
+      })
+    })
   })

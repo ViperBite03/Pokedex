@@ -5,6 +5,7 @@ body {
     rgba(139, 61, 255, 1) 0%,
     rgba(103, 227, 231, 1) 100%
   );
+  margin: 0;
 }
 
 * {
@@ -22,6 +23,14 @@ a:hover {
   cursor: pointer;
 }
 
+.header {
+  width: 100%;
+  height: 125px;
+  margin-bottom: 80px;
+
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
 .title {
   width: 100%;
   display: flex;
@@ -30,8 +39,7 @@ a:hover {
 }
 
 .title img {
-  max-width: 500px;
-  width: 100%;
+  height: 175px;
   margin-top: 30px;
   transition: 0.3s ease;
   cursor: pointer;
@@ -93,7 +101,7 @@ a:hover {
   transition: 0.3s ease;
   position: absolute;
   z-index: -1;
-} /*asi minimalista mola*/
+}
 
 .wrapper:hover .card {
   transition: 0.3s ease;
@@ -153,7 +161,7 @@ a:hover {
   grid-template-columns: repeat(6, 1fr);
   gap: 50px;
   margin: 50px;
-  margin-top: 70px;
+  margin-top: 155px;
 }
 
 .searchBar {

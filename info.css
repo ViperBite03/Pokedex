@@ -5,6 +5,7 @@ body {
     rgba(139, 61, 255, 1) 0%,
     rgba(103, 227, 231, 1) 100%
   );
+  margin: 0;
 }
 
 * {
@@ -22,6 +23,14 @@ a:hover {
   cursor: pointer;
 }
 
+.header {
+  width: 100%;
+  height: 125px;
+  border-bottom: 80px;
+
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
 .title {
   width: 100%;
   display: flex;
@@ -30,8 +39,7 @@ a:hover {
 }
 
 .title img {
-  max-width: 500px;
-  width: 100%;
+  height: 175px;
   margin-top: 30px;
   transition: 0.3s ease;
   cursor: pointer;
@@ -48,8 +56,13 @@ a:hover {
   justify-content: space-evenly;
 }
 
+.capsule-container {
+  width: 100%;
+}
+
 .capsule {
-  width: 50%;
+  max-width: 850px;
+  width: 100%;
   height: 575px;
   text-align: center;
   color: white;
@@ -81,6 +94,7 @@ h1 {
 .images {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .centralImage {
@@ -124,7 +138,7 @@ h1 {
 }
 
 .minImage:hover .minImageBG {
-  left: -25px;
+  left: -50px;
   transition: 0.2s;
 }
 
@@ -133,6 +147,14 @@ h1 {
   cursor: pointer;
 }
 
+.minImage:hover img {
+  margin-top: -20px;
+  padding-bottom: 20px;
+  transition: 0.2s;
+}
+
 .minImage img {
-  width: 175px;
+  width: 210px;
+  padding-left: 35px;
+  transition: 0.2s;
 }

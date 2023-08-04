@@ -40,7 +40,6 @@ function setListNumber(listID) {
         'src',
         data.sprites.other['official-artwork'].front_default
       )
-      console.log(data.id)
     })
   if (listID > 1) {
     fetch('https://pokeapi.co/api/v2/pokemon/' + (listID - 1))
@@ -51,7 +50,6 @@ function setListNumber(listID) {
           'src',
           data.sprites.other['official-artwork'].front_default
         )
-        console.log(data.id)
       })
   }
 }
