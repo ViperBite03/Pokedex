@@ -42,12 +42,7 @@ a:hover {
   transition: 0.3s ease;
 }
 
-.bigImage {
-  margin-top: -65px;
-}
-
 .container {
-  margin-top: 65px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -88,12 +83,35 @@ h1 {
   flex-direction: column;
 }
 
+.centralImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bigImage {
+  width: fit-content;
+  padding: 15px;
+}
+
+.bigImageBG {
+  width: 525px;
+  height: 525px;
+
+  position: absolute;
+  z-index: -1;
+
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 3px solid rgb(255, 255, 255);
+}
+
 .minImageBG {
   width: 325px;
   height: 110px;
 
-  left: -50px;
-  margin-top: 87.5px;
+  left: -75px;
+  margin-top: 35px;
   position: absolute;
   z-index: -1;
 
@@ -114,6 +132,7 @@ h1 {
   width: fit-content;
   cursor: pointer;
 }
+
 .minImage img {
-  width: 200px;
+  width: 175px;
 }
