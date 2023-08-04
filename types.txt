@@ -1,0 +1,35 @@
+Fire:   <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/fire.png?cb=1" rel="fire"/>
+
+Water:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/water.png?cb=1" rel="water"/>
+
+Grass:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/grass.png?cb=1" rel="grass"/>
+
+Bug:    <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/bug.png?cb=1" rel="bug"/>
+
+Ice:    <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/ice.png?cb=1" rel="ice"/>
+
+Fighting:   <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/fighting.png?cb=1" rel="fighting"/>
+
+Psychic:    <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/psychic.png?cb=1" rel="psychic"/>
+
+Fairy:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/fairy.png?cb=1" rel="fairy"/>
+
+Poison: <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/poison.png?cb=1" rel="poison"/>
+
+Rock:   <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/rock.png?cb=1" rel="rock"/>
+
+Ground:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/ground.png?cb=1" rel="ground"/>
+
+Dark:   <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/dark.png?cb=1" rel="dark"/>
+
+Electric:   <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/electric.png?cb=1" rel="electric"/>
+
+Flying: <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/flying.png?cb=1" rel="flying"/>
+
+Ghost:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/ghost.png?cb=1" rel="ghost"/>
+
+Steel:  <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/steel.png?cb=1" rel="steel"/>
+
+Dragon: <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/dragon.png?cb=1" rel="dragon"/>
+
+Normal: <link href="https://storage.googleapis.com/nianticweb-media/pokemongo/types/normal.png?cb=1" rel="normal"/>
