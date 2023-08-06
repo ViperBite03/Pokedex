@@ -14,14 +14,31 @@ function setImage(pokeUrl = '') {
   bigImageLabel.setAttribute('src', pokeUrl)
 }
 
-function setLabelsTypes(types) {
+function setImageTypes(types) {
+  const typesDiv = document.querySelector('.types')
+  types.map((type) => {
+    const typeName = type.type.name
+    const typeImage = document.createElement('img')
+    typeImage.setAttribute(
+      'src',
+      `https://storage.googleapis.com/nianticweb-media/pokemongo/types/${typeName}.png?cb=1`
+    )
+    typeImage.setAttribute(
+      'title',
+      typeName.charAt(0).toUpperCase() + typeName.slice(1)
+    )
+    typesDiv.appendChild(typeImage)
+  })
+}
+
+/*function setLabelsTypes(types) {
   const typesDiv = document.querySelector('.types')
   for (let type of types) {
     const typeDiv = document.createElement('div')
     typeDiv.textContent = type.type.name.toUpperCase()
     typesDiv.appendChild(typeDiv)
   }
-}
+}*/
 
 function setDimensions(height = '???', weight = '???') {
   const heightDiv = document.querySelector('.height')
@@ -32,15 +49,6 @@ function setDimensions(height = '???', weight = '???') {
 }
 
 function setListNumber(listID) {
-  fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
-    .then((response) => response.json())
-    .then((data) => {
-      const postImage = document.querySelector('.postImage')
-      postImage.setAttribute(
-        'src',
-        data.sprites.other['official-artwork'].front_default
-      )
-    })
   if (listID > 1) {
     fetch('https://pokeapi.co/api/v2/pokemon/' + (listID - 1))
       .then((response) => response.json())
@@ -50,6 +58,22 @@ function setListNumber(listID) {
           'src',
           data.sprites.other['official-artwork'].front_default
         )
+        document
+          .querySelector('.pre-image-link')
+          .setAttribute('href', `/info.html?pokeID=${data.name}`)
+      })
+
+    fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
+      .then((response) => response.json())
+      .then((data) => {
+        const postImage = document.querySelector('.postImage')
+        postImage.setAttribute(
+          'src',
+          data.sprites.other['official-artwork'].front_default
+        )
+        document
+          .querySelector('.post-image-link')
+          .setAttribute('href', `/info.html?pokeID=${data.name}`)
       })
   }
 }
@@ -67,7 +91,8 @@ function setNumber(listID = '???') {
 function createPokeInfoDOM(pokeData) {
   setTitle('h1')
   setImage(pokeData.sprites.other['official-artwork'].front_default)
-  setLabelsTypes(pokeData.types)
+  setImageTypes(pokeData.types)
+  //setLabelsTypes(pokeData.types)
   setDimensions(pokeData.height, pokeData.weight)
   setNumber(pokeData.id)
   setListNumber(pokeData.id)

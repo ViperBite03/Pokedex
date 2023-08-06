@@ -91,6 +91,12 @@ h1 {
   font-size: 25px;
 }
 
+.types img {
+  width: 40px;
+  margin: 5px;
+  cursor: pointer;
+}
+
 .images {
   display: flex;
   flex-direction: column;
