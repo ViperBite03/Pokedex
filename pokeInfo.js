@@ -61,6 +61,10 @@ function setListNumber(listID) {
         document
           .querySelector('.pre-image-link')
           .setAttribute('href', `/info.html?pokeID=${data.name}`)
+
+        const preName = document.querySelector('.preName')
+        preName.textContent =
+          data.name.charAt(0).toUpperCase() + data.name.slice(1)
       })
 
     fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
@@ -74,6 +78,10 @@ function setListNumber(listID) {
         document
           .querySelector('.post-image-link')
           .setAttribute('href', `/info.html?pokeID=${data.name}`)
+
+        const postName = document.querySelector('.postName')
+        postName.textContent =
+          data.name.charAt(0).toUpperCase() + data.name.slice(1)
       })
   }
 }
@@ -92,7 +100,6 @@ function createPokeInfoDOM(pokeData) {
   setTitle('h1')
   setImage(pokeData.sprites.other['official-artwork'].front_default)
   setImageTypes(pokeData.types)
-  //setLabelsTypes(pokeData.types)
   setDimensions(pokeData.height, pokeData.weight)
   setNumber(pokeData.id)
   setListNumber(pokeData.id)

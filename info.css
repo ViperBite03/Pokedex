@@ -26,7 +26,7 @@ a:hover {
 .header {
   width: 100%;
   height: 125px;
-  border-bottom: 80px;
+  margin-bottom: 80px;
 
   background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
 }
@@ -54,35 +54,35 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-}
+  padding-top: 60px;
 
-.capsule-container {
-  width: 100%;
+  color: white;
+  font-size: 25px;
 }
 
 .capsule {
   max-width: 850px;
   width: 100%;
   height: 575px;
+
   text-align: center;
   color: white;
   font-family: 'Days One', sans-serif;
 
   background-color: rgba(255, 255, 255, 0.25);
-  border: 3px solid rgb(255, 255, 255);
   border-radius: 25px;
+  box-shadow: 15px 15px 22px -15px rgba(66, 66, 66, 0.55);
 }
 
 h1 {
   font-size: 50px;
   font-weight: 500;
-  margin-top: 30px;
-  margin-bottom: 0px;
+  margin: 0;
 }
 
 .list {
   font-size: 25px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 .properties {
@@ -94,73 +94,31 @@ h1 {
 .types img {
   width: 40px;
   margin: 5px;
-  cursor: pointer;
-}
-
-.images {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.centralImage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .bigImage {
-  width: fit-content;
-  padding: 15px;
-}
-
-.bigImageBG {
-  width: 525px;
-  height: 525px;
-
-  position: absolute;
-  z-index: -1;
-
-  border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.25);
-  border: 3px solid rgb(255, 255, 255);
-}
-
-.minImageBG {
-  width: 325px;
-  height: 110px;
-
-  left: -75px;
-  margin-top: 35px;
-  position: absolute;
-  z-index: -1;
-
-  background-color: rgba(255, 255, 255, 0.25);
-  border: 3px solid rgb(255, 255, 255);
-  border-top-right-radius: 55px;
-  border-bottom-right-radius: 55px;
-
-  transition: 0.2s;
-}
-
-.minImage:hover .minImageBG {
-  left: -50px;
-  transition: 0.2s;
+  height: 350px;
 }
 
 .minImage {
-  width: fit-content;
-  cursor: pointer;
-}
+  max-width: 350px;
+  width: 100%;
+  height: 225px;
+  text-align: center;
+  color: white;
+  font-family: 'Days One', sans-serif;
 
-.minImage:hover img {
-  margin-top: -20px;
-  padding-bottom: 20px;
-  transition: 0.2s;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+  box-shadow: 15px 15px 22px -15px rgba(66, 66, 66, 0.55);
 }
 
 .minImage img {
-  width: 210px;
-  padding-left: 35px;
-  transition: 0.2s;
+  height: 175px;
+  transition: 0.2s ease;
+}
+
+.minImage:hover img {
+  transform: scale(1.2);
+  transition: 0.2s ease;
 }
