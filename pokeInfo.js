@@ -49,41 +49,57 @@ function setDimensions(height = '???', weight = '???') {
 }
 
 function setListNumber(listID) {
-  if (listID > 1) {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + (listID - 1))
-      .then((response) => response.json())
-      .then((data) => {
-        const postImage = document.querySelector('.preImage')
-        postImage.setAttribute(
-          'src',
-          data.sprites.other['official-artwork'].front_default
-        )
-        document
-          .querySelector('.pre-image-link')
-          .setAttribute('href', `/info.html?pokeID=${data.name}`)
+  fetch('https://pokeapi.co/api/v2/pokemon/' + (listID - 1))
+    .then((response) => {
+      if (response.status === 404) throw 'Miquel no va a salir de D2'
+      return response.json()
+    })
+    .catch(() => {
+      const preImageLink = document.querySelector('[pre-image]')
+      preImageLink.remove()
 
-        const preName = document.querySelector('.preName')
-        preName.textContent =
-          data.name.charAt(0).toUpperCase() + data.name.slice(1)
-      })
+      const pokeballImage = document.createElement('img')
+      pokeballImage.setAttribute(
+        'src',
+        'https://tcg.pokemon.com/assets/img/parents-guide/header/pokeball.png'
+      )
+      pokeballImage.setAttribute('class', 'pokeballImage')
 
-    fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
-      .then((response) => response.json())
-      .then((data) => {
-        const postImage = document.querySelector('.postImage')
-        postImage.setAttribute(
-          'src',
-          data.sprites.other['official-artwork'].front_default
-        )
-        document
-          .querySelector('.post-image-link')
-          .setAttribute('href', `/info.html?pokeID=${data.name}`)
+      const container = document.querySelector('.container')
+      container.prepend(pokeballImage)
+    })
 
-        const postName = document.querySelector('.postName')
-        postName.textContent =
-          data.name.charAt(0).toUpperCase() + data.name.slice(1)
-      })
-  }
+    .then((data) => {
+      const preImage = document.querySelector('.preImage')
+      preImage.setAttribute(
+        'src',
+        data.sprites.other['official-artwork'].front_default
+      )
+      document
+        .querySelector('.pre-image-link')
+        .setAttribute('href', `/info.html?pokeID=${data.name}`)
+
+      const preName = document.querySelector('.preName')
+      preName.textContent =
+        data.name.charAt(0).toUpperCase() + data.name.slice(1)
+    })
+
+  fetch('https://pokeapi.co/api/v2/pokemon/' + (listID + 1))
+    .then((response) => response.json())
+    .then((data) => {
+      const postImage = document.querySelector('.postImage')
+      postImage.setAttribute(
+        'src',
+        data.sprites.other['official-artwork'].front_default
+      )
+      document
+        .querySelector('.post-image-link')
+        .setAttribute('href', `/info.html?pokeID=${data.name}`)
+
+      const postName = document.querySelector('.postName')
+      postName.textContent =
+        data.name.charAt(0).toUpperCase() + data.name.slice(1)
+    })
 }
 
 function setNumber(listID = '???') {
