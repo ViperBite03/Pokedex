@@ -26,16 +26,13 @@ async function createCard(poke) {
   const circle = document.createElement('div')
   circle.classList.add('circle')
 
-  pokeImage.setAttribute(
-    'src',
-    poke.sprites.other['official-artwork'].front_default
-  )
+  pokeImage.setAttribute('src', poke.imgArtWork)
 
   const info = document.createElement('a')
   info.setAttribute('href', '/info.html?pokeID=' + poke.name)
   info.setAttribute('class', poke.name)
 
-  pokeImageBG.setAttribute('src', poke.sprites.front_default)
+  pokeImageBG.setAttribute('src', poke.imgDefault)
 
   content.appendChild(pokeImage)
   content.appendChild(pokeName)
@@ -59,9 +56,7 @@ function getPokemonFromStorage() {
 }
 
 function buildPage() {
-  const pokeData = window.localStorage.getItem('pokeData')
-
-  console.log('aaaaaaaaaaaaaaaaaaaaaaaa ', JSON.parse(pokeData).length)
+  const pokeData = window.localStorage.getItem('pokeData') || '[]'
   for (let pokemon of JSON.parse(pokeData)) {
     createCard(pokemon)
   }
@@ -69,7 +64,6 @@ function buildPage() {
   const searchInput = document.querySelector('[data-search]')
   searchInput.addEventListener('input', (e) => {
     const value = e.target.value
-    console.log(value)
 
     pokeData.forEach((pokemon) => {
       const isVisible = pokemon.name.includes(value)
@@ -82,20 +76,39 @@ function buildPage() {
 getPokemonFromStorage()
 
 function fetchPokeData() {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+  fetch('https://pokeapi.co/api/v2/pokemon?limit=73')
     .then((response) => response.json())
     .then(async (data) => {
       let allPokemons = []
       for (let pokemon of data.results) {
         const response = await fetch(pokemon.url)
 
-        const pokeInfo = await response.json()
+        const pokeInfoResponse = await response.json()
 
-        console.log(pokeInfo)
+        const pokeInfo = {
+          name: pokeInfoResponse.name,
+          imgArtWork:
+            pokeInfoResponse.sprites.other['official-artwork'].front_default,
+          imgDefault: pokeInfoResponse.sprites.front_default,
+        }
+
         allPokemons.push(pokeInfo)
       }
 
-      console.log(allPokemons)
       window.localStorage.setItem('pokeData', JSON.stringify(allPokemons))
     })
 }
+
+const arrow = document.querySelector('.arrow')
+function handleIntersection(entries) {
+  entries.map((entry) => {
+    if (entry.isIntersecting) {
+      console.log('Miquel es bobo')
+    } else {
+      entry.target.classList.remove('visible')
+    }
+  })
+}
+
+const observer = new IntersectionObserver(handleIntersection)
+observer.observe(arrow)

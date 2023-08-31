@@ -40,7 +40,9 @@ a:hover {
 }
 
 .title img {
-  height: 175px;
+  max-width: 475px;
+  width: 100%;
+  padding: 20px;
   margin-top: 30px;
   transition: 0.3s ease;
   cursor: pointer;
@@ -165,21 +167,34 @@ a:hover {
   margin-top: 155px;
 }
 
+.arrow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.arrow svg {
+  height: 50px;
+  width: 50px;
+  stroke-width: 20px;
+}
+
 .searchBar {
+  max-width: 225px;
+  width: 100%;
   top: 50px;
-  left: 85%;
+  right: 30px;
   display: flex;
   position: absolute;
 }
 
 .searchBar img {
   width: 25px;
-
-  position: absolute;
+  right: 15px;
   top: 22%;
-  left: 0;
-  right: -75%;
-  margin: auto;
+  position: absolute;
 }
 
 .searching {
@@ -194,12 +209,6 @@ a:hover {
   border-radius: 55px;
   border: 0;
   box-shadow: 15px 15px 22px -15px rgba(97, 97, 97, 0.3);
-
-  /*border: 3px solid rgb(255, 255, 255);
-
-  top: 25%;
-  left: 15px;
-  right: 75%;*/
 }
 
 input:focus {
@@ -229,6 +238,19 @@ input::placeholder {
   .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .cards {
+    margin-top: 225px;
+  }
+  .searchBar {
+    top: 250px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    justify-content: center;
   }
 }
 
