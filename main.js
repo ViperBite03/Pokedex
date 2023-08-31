@@ -1,10 +1,6 @@
 const cards = document.querySelector('.cards')
 
 async function createCard(poke) {
-  const response = await fetch(poke.url)
-
-  const data = await response.json()
-
   const card = document.createElement('div')
   card.classList.add('card')
 
@@ -32,14 +28,14 @@ async function createCard(poke) {
 
   pokeImage.setAttribute(
     'src',
-    data.sprites.other['official-artwork'].front_default
+    poke.sprites.other['official-artwork'].front_default
   )
 
   const info = document.createElement('a')
   info.setAttribute('href', '/info.html?pokeID=' + poke.name)
   info.setAttribute('class', poke.name)
 
-  pokeImageBG.setAttribute('src', data.sprites.front_default)
+  pokeImageBG.setAttribute('src', poke.sprites.front_default)
 
   content.appendChild(pokeImage)
   content.appendChild(pokeName)
@@ -52,22 +48,54 @@ async function createCard(poke) {
   cards.appendChild(info.cloneNode(true))
 }
 
-fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
-  .then((response) => response.json())
-  .then(async (data) => {
-    for (let pokemon of data.results) {
-      await createCard(pokemon)
-    }
+function getPokemonFromStorage() {
+  const pokeData = window.localStorage.getItem('pokeData')
 
-    const searchInput = document.querySelector('[data-search]')
-    searchInput.addEventListener('input', (e) => {
-      const value = e.target.value
-      console.log(value)
+  if (!pokeData) {
+    fetchPokeData()
+  }
 
-      data.results.forEach((pokemon) => {
-        const isVisible = pokemon.name.includes(value)
-        const pokeNameHTML = document.querySelector('.' + pokemon.name)
-        pokeNameHTML.classList.toggle('hide', !isVisible)
-      })
+  buildPage()
+}
+
+function buildPage() {
+  const pokeData = window.localStorage.getItem('pokeData')
+
+  console.log('aaaaaaaaaaaaaaaaaaaaaaaa ', JSON.parse(pokeData).length)
+  for (let pokemon of JSON.parse(pokeData)) {
+    createCard(pokemon)
+  }
+
+  const searchInput = document.querySelector('[data-search]')
+  searchInput.addEventListener('input', (e) => {
+    const value = e.target.value
+    console.log(value)
+
+    pokeData.forEach((pokemon) => {
+      const isVisible = pokemon.name.includes(value)
+      const pokeNameHTML = document.querySelector('.' + pokemon.name)
+      pokeNameHTML.classList.toggle('hide', !isVisible)
     })
   })
+}
+
+getPokemonFromStorage()
+
+function fetchPokeData() {
+  fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+    .then((response) => response.json())
+    .then(async (data) => {
+      let allPokemons = []
+      for (let pokemon of data.results) {
+        const response = await fetch(pokemon.url)
+
+        const pokeInfo = await response.json()
+
+        console.log(pokeInfo)
+        allPokemons.push(pokeInfo)
+      }
+
+      console.log(allPokemons)
+      window.localStorage.setItem('pokeData', JSON.stringify(allPokemons))
+    })
+}
