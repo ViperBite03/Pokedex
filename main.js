@@ -18,7 +18,7 @@ async function createCard(poke) {
   pokeName.textContent = poke.name.toUpperCase()
 
   const pokeImage = document.createElement('img')
-  pokeImage.classList.add('pokeImage') //no es lo mismo que la constante!
+  pokeImage.classList.add('pokeImage')
 
   const pokeImageBG = document.createElement('img')
   pokeImageBG.classList.add('pokeImageBG')
@@ -45,19 +45,19 @@ async function createCard(poke) {
   cards.appendChild(info.cloneNode(true))
 }
 
-function getPokemonFromStorage() {
+async function getPokemonFromStorage() {
   const pokeData = window.localStorage.getItem('pokeData')
 
   if (!pokeData) {
-    fetchPokeData()
+    await fetchPokeData()
   }
 
   buildPage()
 }
 
 function buildPage() {
-  const pokeData = window.localStorage.getItem('pokeData') || '[]'
-  for (let pokemon of JSON.parse(pokeData)) {
+  const pokeData = JSON.parse(window.localStorage.getItem('pokeData') || '[]')
+  for (let pokemon of pokeData) {
     createCard(pokemon)
   }
 
@@ -75,31 +75,36 @@ function buildPage() {
 
 getPokemonFromStorage()
 
-function fetchPokeData() {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=73')
-    .then((response) => response.json())
-    .then(async (data) => {
-      let allPokemons = []
-      for (let pokemon of data.results) {
-        const response = await fetch(pokemon.url)
+async function fetchPokeData() {
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1273')
+  const data = await response.json()
 
-        const pokeInfoResponse = await response.json()
+  let allPokemons = []
+  let pokemonUrls = []
 
-        const pokeInfo = {
-          name: pokeInfoResponse.name,
-          imgArtWork:
-            pokeInfoResponse.sprites.other['official-artwork'].front_default,
-          imgDefault: pokeInfoResponse.sprites.front_default,
-        }
+  for (let pokemon of data.results) {
+    pokemonUrls.push(fetch(pokemon.url))
+  }
 
-        allPokemons.push(pokeInfo)
-      }
+  const response2 = await Promise.all(pokemonUrls)
 
-      window.localStorage.setItem('pokeData', JSON.stringify(allPokemons))
-    })
+  for (let result of response2) {
+    const pokeInfoResponse = await result.json()
+
+    const pokeInfo = {
+      name: pokeInfoResponse.name,
+      imgArtWork:
+        pokeInfoResponse.sprites.other['official-artwork'].front_default,
+      imgDefault: pokeInfoResponse.sprites.front_default,
+    }
+
+    allPokemons.push(pokeInfo)
+  }
+
+  window.localStorage.setItem('pokeData', JSON.stringify(allPokemons))
 }
 
-const arrow = document.querySelector('.arrow')
+/*const arrow = document.querySelector('.arrow')
 function handleIntersection(entries) {
   entries.map((entry) => {
     if (entry.isIntersecting) {
@@ -112,3 +117,8 @@ function handleIntersection(entries) {
 
 const observer = new IntersectionObserver(handleIntersection)
 observer.observe(arrow)
+
+function get30pokemons(scrollCounter) {
+  //encontrar qué rango de pokemons hay que buscar
+  //detectar si están en la caché, si no hacer un fetch y meterlos en ella
+}*/
